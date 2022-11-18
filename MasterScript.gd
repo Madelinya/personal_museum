@@ -63,8 +63,6 @@ func _character_probed(probed_area) -> void:
 	target += 90*turn_direction
 	
 	last_probed_detector = probed_area
-	
-	print("boom")
 
 func match_scene_to_target(delta) -> void:
 	#Matches all parameters to target and executes rotation and such
@@ -117,7 +115,7 @@ func initialize_scene_order() -> void:
 	randomize()
 	#initial instantation 
 	scene_order = expositions
-	#scene_order.shuffle()
+	scene_order.shuffle()
 	scene_order.push_front(welcome_screen)
 
 func initial_instantiation() -> void:

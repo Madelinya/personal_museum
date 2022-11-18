@@ -9,7 +9,7 @@ enum STATES {WALKING = 2, IDLE = 1, INTERACTING = 0}
 var walk_dir = 0
 var look_dir:Vector2 = Vector2(0,1)
 var ignore_input = false;
-var walk_spd = 0.5  *6
+var walk_spd = 0.5*6
 
 @onready var animation_tree = $AnimationTree
 @onready var ignore_move: bool = false
