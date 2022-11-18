@@ -1,12 +1,16 @@
 extends Node3D
 
+@export var welcome_screen:PackedScene
+@export var expositions:Array[PackedScene]
+
 var rot_speed = 4
 var interpolator = 0
 var target:float = 0
 
-
 var out_of_bounds = 5.75
 var rotation_index = 0
+var current_room = 10
+var scene_order:Array[PackedScene]
 
 @onready var last_probed_detector = $Building/Detectors/f_right/f_right_probe
 @onready var camera_pivot = $CameraPivot
@@ -19,27 +23,24 @@ var rotation_index = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	initialize_scene_order()
+	initial_instantiation()
+	#connects signals
 	character_probe.area_entered.connect(_character_probed)
-	
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	current_rotation = camera_pivot.rotation.y
 	
 	# match current rot to target rot
 	match_scene_to_target(delta)
 	character_out_of_bounds()
-	
-	pass
 
 func _physics_process(_delta):
 	pass
 
-func _character_probed(probed_area):
+func _character_probed(probed_area) -> void:
 	var detector_index = detectors.find(probed_area)
 	var current_target_index:int = (int(target) / int(90.0))%4
 	var negative_mod = -2*(signi(current_target_index) - 1*abs(signi(current_target_index)))
@@ -49,19 +50,14 @@ func _character_probed(probed_area):
 	
 	if detector_index < corrected_index || ((detector_index == 3)&&(corrected_index == 0)):
 		target -= 90
+		current_room = overflow_int(current_room, -1, scene_order.size())
 	elif detector_index == corrected_index:
+		current_room = overflow_int(current_room, 1, scene_order.size())
 		target += 90
 	
-	print(detector_index)
-	print(corrected_index)
-	print(negative_mod)
-	print(current_target_index)
-	print("-----------------------")
-	
 	last_probed_detector = probed_area
-	pass
 
-func match_scene_to_target(delta):
+func match_scene_to_target(delta) -> void:
 	#Matches all parameters to target and executes rotation and such
 	if !compare_floats(rad_to_deg(current_rotation),(target), 0.0001):
 		interpolator = clamp(interpolator +(delta / rot_speed), 0, 1)
@@ -79,8 +75,6 @@ func match_scene_to_target(delta):
 		character.motion_vector = Vector2(cos(current_rotation), sin(current_rotation))
 		character.ignore_input = false
 		interpolator = 0
-		print("booo")
-		load_in_scene(0,0)
 
 func compare_floats(f1:float,f2:float,tolerance:float) -> bool:
 	return abs(f1 - f2) <= tolerance
@@ -92,5 +86,33 @@ func character_out_of_bounds() -> void:
 		_character_probed(last_probed_detector)
 	pass
 
-func load_in_scene(spawn_on, index_to_spawn):
+func load_in_scene(spawn_on:Node, scene_to_spawn:PackedScene) -> void:
+	if spawn_on.get_child_count() > 0:
+		var to_destroy = spawn_on.get_children()
+		for x in to_destroy:
+			x.queue_free()
+	var scn = scene_to_spawn.instantiate()
+	spawn_on.add_child(scn)
+	pass
+
+func overflow_int(rot:int,dir:int,size:int) -> int:
+	var dir_n = dir%size
+	var rot_out = rot + dir_n
+	if rot_out < -0.001:
+		rot_out += size
+	rot_out = rot_out % size
+	return rot_out
+
+func initialize_scene_order() -> void:
+		#shuffles expositions
+	randomize()
+	#initial instantation 
+	scene_order = expositions
+	#scene_order.shuffle()
+	scene_order.push_front(welcome_screen)
+
+func initial_instantiation() -> void:
+	for i in range(-1,3):
+		var target_node = get_node("Building/SpawnPoints/%d" % overflow_int(rotation_index,i,4))
+		load_in_scene(target_node,scene_order[overflow_int(current_room, i, scene_order.size())])
 	pass

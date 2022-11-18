@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb6c7tyqk2e71"]
+
+[ext_resource type="PackedScene" uid="uid://dx1hmru2dgkyd" path="res://Temp.tscn" id="1_bdglb"]
+
+[node name="Expo_1" type="Node3D"]
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("1_bdglb")]
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("1_bdglb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586342, 0.580062, 0)
