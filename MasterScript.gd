@@ -82,6 +82,8 @@ func match_scene_to_target(delta) -> void:
 		character.motion_vector = Vector2(cos(current_rotation), sin(current_rotation))
 		character.ignore_input = false
 		interpolator = 0
+	else:
+		character.ignore_input = false
 
 func compare_floats(f1:float,f2:float,tolerance:float) -> bool:
 	return abs(f1 - f2) <= tolerance
