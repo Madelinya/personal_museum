@@ -9,7 +9,7 @@ var target:float = 0
 
 var out_of_bounds = 5.75
 var rotation_index = 0
-var current_room = 10
+var current_room = 11
 var scene_order:Array[PackedScene]
 
 @onready var last_probed_detector = $Building/Detectors/f_right/f_right_probe
@@ -46,16 +46,25 @@ func _character_probed(probed_area) -> void:
 	var negative_mod = -2*(signi(current_target_index) - 1*abs(signi(current_target_index)))
 	var corrected_index = current_target_index + negative_mod
 	
+	var turn_direction = 1
+	
 	rotation_index = corrected_index
 	
 	if detector_index < corrected_index || ((detector_index == 3)&&(corrected_index == 0)):
-		target -= 90
-		current_room = overflow_int(current_room, -1, scene_order.size())
+		turn_direction = -1 
 	elif detector_index == corrected_index:
-		current_room = overflow_int(current_room, 1, scene_order.size())
-		target += 90
+		turn_direction = 1
+	
+	var load_at = get_node("Building/SpawnPoints/%d" % overflow_int(rotation_index, turn_direction*2,4))
+	var to_load = scene_order[overflow_int(current_room, turn_direction * 2, scene_order.size())]
+	load_in_scene(load_at, to_load)
+	
+	current_room = overflow_int(current_room, turn_direction, scene_order.size())
+	target += 90*turn_direction
 	
 	last_probed_detector = probed_area
+	
+	print("boom")
 
 func match_scene_to_target(delta) -> void:
 	#Matches all parameters to target and executes rotation and such

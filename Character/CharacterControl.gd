@@ -9,6 +9,7 @@ enum STATES {WALKING = 2, IDLE = 1, INTERACTING = 0}
 var walk_dir = 0
 var look_dir:Vector2 = Vector2(0,1)
 var ignore_input = false;
+var walk_spd = 0.5  *6
 
 @onready var animation_tree = $AnimationTree
 @onready var ignore_move: bool = false
@@ -51,8 +52,8 @@ func walk_state(delta):
 	animation_tree["parameters/walking/current"] = 1
 	
 	$CharRoot.rotation.y = deg_to_rad(90)*walk_dir
-	position.x += 0.5*walk_dir*delta*motion_vector.x
-	position.z += -0.5*walk_dir*delta*motion_vector.y
+	position.x += walk_spd*walk_dir*delta*motion_vector.x
+	position.z += -walk_spd*walk_dir*delta*motion_vector.y
 
 func interact_state (_delta):
 	if !animation_tree["parameters/interact_oneshot/active"]:
