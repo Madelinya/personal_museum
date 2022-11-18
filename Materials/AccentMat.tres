@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dks87o80v4mks"]
+
+[ext_resource type="Shader" uid="uid://n2igkrqtgnlr" path="res://Materials/Unsheder2.tres" id="1_4bu1k"]
+
+[resource]
+resource_name = "Material.002"
+render_priority = 0
+shader = ExtResource("1_4bu1k")
+shader_parameter/albedo = Color(0.309804, 0.0823529, 0.180392, 1)

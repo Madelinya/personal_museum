@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cekpe3v85onbv"]
+
+[ext_resource type="Shader" uid="uid://doeyols1p8yb5" path="res://Materials/WorldspaceHardcodeShader.tres" id="1_jo86l"]
+
+[resource]
+resource_name = "Material.002"
+render_priority = 0
+shader = ExtResource("1_jo86l")
+shader_parameter/albedo_1 = Color(0, 0, 0, 1)
+shader_parameter/albedo_2 = Color(0.2, 0.0509804, 0.113725, 1)
+shader_parameter/offset = -0.6
+shader_parameter/scale = 0.5
+shader_parameter/world_pos = null
