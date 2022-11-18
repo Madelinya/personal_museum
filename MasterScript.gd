@@ -9,7 +9,7 @@ var target:float = 0
 
 var out_of_bounds = 5.75
 var rotation_index = 0
-var current_room = 11
+var current_room = 0
 var scene_order:Array[PackedScene]
 
 @onready var last_probed_detector = $Building/Detectors/f_right/f_right_probe
@@ -63,6 +63,9 @@ func _character_probed(probed_area) -> void:
 	target += 90*turn_direction
 	
 	last_probed_detector = probed_area
+	
+	print(current_room)
+	print(expositions.find(scene_order[current_room]))
 
 func match_scene_to_target(delta) -> void:
 	#Matches all parameters to target and executes rotation and such
@@ -116,7 +119,7 @@ func initialize_scene_order() -> void:
 		#shuffles expositions
 	randomize()
 	#initial instantation 
-	scene_order = expositions
+	scene_order.append_array(expositions)
 	scene_order.shuffle()
 	scene_order.push_front(welcome_screen)
 
