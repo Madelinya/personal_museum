@@ -3,7 +3,7 @@ extends Node3D
 @export var welcome_screen:PackedScene
 @export var expositions:Array[PackedScene]
 
-var rot_speed = 4
+var rot_speed = 1.5
 var interpolator = 0
 var target:float = 0
 
