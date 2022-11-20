@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtflbt74m6rhd"]
+[gd_scene load_steps=23 format=3 uid="uid://bxgp18coe2j7l"]
 
 [ext_resource type="Script" path="res://MasterScript.gd" id="1_23wxo"]
 [ext_resource type="Material" uid="uid://ctabpq8w38mf1" path="res://Materials/FloorMat.tres" id="1_ged3t"]
 [ext_resource type="PackedScene" uid="uid://cbs3qgjbcbbhm" path="res://Character/Character.tscn" id="1_qoev2"]
 [ext_resource type="Material" uid="uid://c7vkvw0p1ncth" path="res://Materials/WallMat.tres" id="2_4ejvd"]
-[ext_resource type="PackedScene" uid="uid://dign8sewgdg1e" path="res://Scenes/Initial_scene.tscn" id="2_f68tn"]
 [ext_resource type="Material" uid="uid://dks87o80v4mks" path="res://Materials/AccentMat.tres" id="2_fnffy"]
+[ext_resource type="PackedScene" uid="uid://dign8sewgdg1e" path="res://Scenes/Initial/Initial_scene.tscn" id="2_ljen1"]
 [ext_resource type="PackedScene" uid="uid://b323uxr2knjmo" path="res://Scenes/Expo_0.tscn" id="3_28370"]
 [ext_resource type="PackedScene" uid="uid://cb6c7tyqk2e71" path="res://Scenes/Expo_1.tscn" id="4_nqm6s"]
 [ext_resource type="Material" uid="uid://bo4j5d6vx2t7r" path="res://Materials/SkyMat.tres" id="5_dxx4a"]
@@ -39,7 +39,7 @@ size = Vector2(40, 40)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_23wxo")
-welcome_screen = ExtResource("2_f68tn")
+welcome_screen = ExtResource("2_ljen1")
 expositions = [ExtResource("3_28370"), ExtResource("4_nqm6s"), ExtResource("5_wqw3e"), ExtResource("6_s26of"), ExtResource("7_72xf2"), ExtResource("8_tqqxg"), ExtResource("9_gfamr"), ExtResource("10_f0gqm"), ExtResource("11_wk1et"), ExtResource("12_54byq")]
 
 [node name="Building" type="Node3D" parent="."]

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://drysn74uhra8q"]
+
+[ext_resource type="Shader" uid="uid://ch4radyoyntsa" path="res://Materials/Unsheder.tres" id="1_3xbyf"]
+[ext_resource type="Texture2D" uid="uid://bxyix72oc6trl" path="res://Scenes/Initial/Entrance.png" id="2_na3q8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3xbyf")
+shader_parameter/albedo = null
+shader_parameter/point_size = null
+shader_parameter/texture_albedo = ExtResource("2_na3q8")
+shader_parameter/uv1_offset = null
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv2_offset = null
+shader_parameter/uv2_scale = null

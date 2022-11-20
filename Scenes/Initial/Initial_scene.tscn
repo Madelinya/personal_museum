@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dign8sewgdg1e"]
+
+[ext_resource type="PackedScene" uid="uid://ruiyj7hhaylb" path="res://Scenes/Initial/Expos.tscn" id="1_fuvlo"]
+
+[node name="Initial_scene" type="Node3D"]
+
+[node name="Expos" parent="." instance=ExtResource("1_fuvlo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
