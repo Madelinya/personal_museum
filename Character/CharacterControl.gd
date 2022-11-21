@@ -12,6 +12,7 @@ var ignore_input = false;
 var walk_spd = 0.5
 var rot_mult = 0
 var rot_spd = 0.25
+var button_walk = 0
 
 @onready var animation_tree = $AnimationTree
 @onready var ignore_move: bool = false
@@ -25,7 +26,7 @@ func _ready():
 func _process(delta):
 	#check input
 	var interact_state = Input.is_action_pressed("interact_button") && !ignore_input
-	walk_dir = int(Input.is_action_pressed("walk_left")) - int(Input.is_action_pressed("walk_right"))
+	walk_dir =clamp(int(Input.is_action_pressed("walk_left")) - int(Input.is_action_pressed("walk_right")) + button_walk, -1, 1) 
 	var walk_state = bool(walk_dir) && !ignore_input
 	
 	set_states(interact_state, walk_state)

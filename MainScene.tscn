@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxgp18coe2j7l"]
+[gd_scene load_steps=28 format=3 uid="uid://bxgp18coe2j7l"]
 
 [ext_resource type="Script" path="res://MasterScript.gd" id="1_23wxo"]
 [ext_resource type="Material" uid="uid://ctabpq8w38mf1" path="res://Materials/FloorMat.tres" id="1_ged3t"]
@@ -17,6 +17,11 @@
 [ext_resource type="PackedScene" path="res://Scenes/Expo_7.tscn" id="10_f0gqm"]
 [ext_resource type="PackedScene" path="res://Scenes/Expo_8.tscn" id="11_wk1et"]
 [ext_resource type="PackedScene" path="res://Scenes/Expo_9.tscn" id="12_54byq"]
+[ext_resource type="Theme" uid="uid://3mnnjmkrmqfd" path="res://UI_Theme.tres" id="18_svpvp"]
+[ext_resource type="Texture2D" uid="uid://bl7n02fr2pn34" path="res://GUI-Icons/Left.png" id="19_ecyq6"]
+[ext_resource type="Texture2D" uid="uid://bspflm7p8ap7b" path="res://GUI-Icons/cROSS.png" id="20_00q2i"]
+[ext_resource type="Texture2D" uid="uid://dluf3jp2bdyo6" path="res://GUI-Icons/ninepatch.png" id="20_bkewu"]
+[ext_resource type="Texture2D" uid="uid://dtuabkhn3lnui" path="res://GUI-Icons/Right.png" id="20_uq8a3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cibqs"]
 material = ExtResource("1_ged3t")
@@ -144,32 +149,223 @@ transform = Transform3D(1.00211, 0, 0, 0, 1.00211, 0, 0, 0, 1.00211, 0, 0, -5.25
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchor_right = 0.201
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 rotation = 0.00354899
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("18_svpvp")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_svpvp")
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+offset_right = 146.0
+offset_bottom = 540.0
+theme = ExtResource("18_svpvp")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/CenterContainer"]
+layout_mode = 2
+offset_top = 222.0
+offset_right = 146.0
+offset_bottom = 318.0
+theme = ExtResource("18_svpvp")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 0
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="Control/HBoxContainer/CenterContainer/MarginContainer2"]
+layout_mode = 2
+offset_left = 50.0
+offset_right = 146.0
+offset_bottom = 96.0
+theme = ExtResource("18_svpvp")
+stretch_mode = 0
+
+[node name="Left_Button" type="Button" parent="Control/HBoxContainer/CenterContainer/MarginContainer2/AspectRatioContainer3"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+offset_right = 96.0
+offset_bottom = 96.0
+focus_mode = 0
+theme = ExtResource("18_svpvp")
+action_mode = 0
+keep_pressed_outside = true
+icon = ExtResource("19_ecyq6")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="MainTextContainer" type="MarginContainer" parent="Control/HBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+offset_left = 146.0
+offset_right = 814.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("18_svpvp")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MainTextRect" type="NinePatchRect" parent="Control/HBoxContainer/MainTextContainer"]
+layout_mode = 2
 offset_left = 50.0
 offset_top = 50.0
-offset_right = -933.552
-offset_bottom = -198.0
+offset_right = 618.0
+offset_bottom = 490.0
+texture = ExtResource("20_bkewu")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer"]
 layout_mode = 2
-offset_right = 400.0
-offset_bottom = 400.0
-stretch_mode = 1
+offset_right = 568.0
+offset_bottom = 47.0
+alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/AspectRatioContainer"]
-custom_minimum_size = Vector2(400, 400)
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_right = 400.0
-offset_bottom = 400.0
+offset_right = 518.0
+offset_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.47
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+offset_left = 42.0
+offset_top = 15.0
+offset_right = 518.0
+offset_bottom = 47.0
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[center]LOREM IPSUM"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 522.0
+offset_right = 564.0
+offset_bottom = 47.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 37.0
+offset_bottom = 42.0
+stretch_mode = 0
+
+[node name="DialogExitButton" type="Button" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer2/AspectRatioContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_top = 2.5
+offset_right = 32.0
+offset_bottom = 34.5
+size_flags_horizontal = 3
+icon = ExtResource("20_00q2i")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 568.0
+offset_right = 568.0
+offset_bottom = 47.0
+
+[node name="marg" type="MarginContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+offset_top = 51.0
+offset_right = 568.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+theme = ExtResource("18_svpvp")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
+
+[node name="MainText" type="RichTextLabel" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/marg"]
+layout_mode = 2
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 518.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_svpvp")
 text = "Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum LoremLorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum Lorem Ipsuuuuuuum  Ipsuuuuuuum "
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+offset_left = 814.0
+offset_right = 960.0
+offset_bottom = 540.0
+theme = ExtResource("18_svpvp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/CenterContainer2"]
+layout_mode = 2
+offset_top = 222.0
+offset_right = 146.0
+offset_bottom = 318.0
+theme = ExtResource("18_svpvp")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 50
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Control/HBoxContainer/CenterContainer2/MarginContainer"]
+layout_mode = 2
+offset_right = 96.0
+offset_bottom = 96.0
+theme = ExtResource("18_svpvp")
+stretch_mode = 0
+
+[node name="Right_Button" type="Button" parent="Control/HBoxContainer/CenterContainer2/MarginContainer/AspectRatioContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+offset_right = 96.0
+offset_bottom = 96.0
+focus_mode = 0
+theme = ExtResource("18_svpvp")
+action_mode = 0
+keep_pressed_outside = true
+icon = ExtResource("20_uq8a3")
+flat = true
+icon_alignment = 1
+expand_icon = true

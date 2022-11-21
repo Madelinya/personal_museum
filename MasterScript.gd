@@ -12,6 +12,9 @@ var rotation_index = 0
 var current_room = 0
 var scene_order:Array[PackedScene]
 
+var right_button_down:bool = false
+var left_button_down:bool = false
+
 @onready var last_probed_detector = $Building/Detectors/f_right/f_right_probe
 @onready var camera_pivot = $CameraPivot
 
@@ -21,22 +24,37 @@ var scene_order:Array[PackedScene]
 @onready var character_probe = $Character/Probe
 @onready var detectors = [$Building/Detectors/f_right/f_right_probe,$Building/Detectors/b_right/b_right_probe,$Building/Detectors/b_left/b_left_probe, $Building/Detectors/f_left/f_left_probe]
 
+@onready var left_button = $Control/HBoxContainer/CenterContainer/MarginContainer2/AspectRatioContainer3/Left_Button
+@onready var right_button = $Control/HBoxContainer/CenterContainer2/MarginContainer/AspectRatioContainer2/Right_Button
+@onready var dialog_container = $Control/HBoxContainer/MainTextContainer/MainTextRect
+@onready var exit_dialog = $Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer2/AspectRatioContainer/DialogExitButton
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	initialize_scene_order()
 	initial_instantiation()
+	
 	#connects signals
 	character_probe.area_entered.connect(_character_probed)
-
+	
+	right_button.button_down.connect(_right_button)
+	right_button.button_up.connect(_right_button)
+	
+	left_button.button_down.connect(_left_button)
+	left_button.button_up.connect(_left_button)
+	
+	exit_dialog.button_down.connect(_exit_dialog)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	current_rotation = camera_pivot.rotation.y
-	
 	# match current rot to target rot
 	match_scene_to_target(delta)
 	character_out_of_bounds()
-
+	#UI movement controls
+	character.button_walk = int(left_button_down) - int(right_button_down)
+	
 func _physics_process(_delta):
 	pass
 
@@ -128,3 +146,11 @@ func initial_instantiation() -> void:
 		var target_node = get_node("Building/SpawnPoints/%d" % overflow_int(rotation_index,i,4))
 		load_in_scene(target_node,scene_order[overflow_int(current_room, i, scene_order.size())])
 	pass
+
+func _right_button() -> void:
+	right_button_down = !right_button_down
+func _left_button() -> void:
+	left_button_down = !left_button_down
+
+func _exit_dialog() -> void:
+	dialog_container.visible = false
