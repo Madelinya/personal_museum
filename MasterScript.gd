@@ -2,6 +2,7 @@ extends Node3D
 
 @export var welcome_screen:PackedScene
 @export var expositions:Array[PackedScene]
+@export_file var textdb_location 
 
 var rot_speed = 1.5
 var interpolator = 0
@@ -14,6 +15,10 @@ var scene_order:Array[PackedScene]
 
 var right_button_down:bool = false
 var left_button_down:bool = false
+
+var opened_file:FileAccess = null
+
+var text_dict:Dictionary
 
 @onready var regex_searcher = RegEx.new()
 
@@ -47,6 +52,12 @@ func _ready():
 	left_button.button_up.connect(_left_button)
 	
 	exit_dialog.button_down.connect(_exit_dialog)
+	#load text into game
+	opened_file = FileAccess.open( textdb_location, FileAccess.READ )
+	while !opened_file.eof_reached():
+		var csv_line = opened_file.get_csv_line(";")
+		if csv_line[0] != "ID" && csv_line.size() > 1:
+			text_dict[csv_line[0]] = csv_line[1]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -66,7 +77,14 @@ func _character_probed(probed_area) -> void:
 	if _is_detector:
 		set_target_on_probe(probed_area)
 	else:
-		print( get_node_name(probed_area) +"_title")
+		var node_id = get_node_name(probed_area)
+		var node_title = node_id+"_title"
+		if node_title in text_dict:
+			print(text_dict[node_title])
+		else:
+			#default
+			pass
+		pass
 	
 
 func match_scene_to_target(delta) -> void:
@@ -146,6 +164,10 @@ func set_target_on_probe(probed_area:Area3D):
 	
 	last_probed_detector = probed_area
 
+func load_dictionary_from_csv(file:FileAccess) -> Dictionary:
+	return {0:0}
+	pass
+#helpers
 func _right_button() -> void:
 	right_button_down = !right_button_down
 func _left_button() -> void:

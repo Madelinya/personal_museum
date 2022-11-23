@@ -49,6 +49,7 @@ size = Vector3(2.64098, 2.45862, 2.07021)
 script = ExtResource("1_23wxo")
 welcome_screen = ExtResource("2_ljen1")
 expositions = [ExtResource("3_28370"), ExtResource("4_nqm6s"), ExtResource("5_wqw3e"), ExtResource("6_s26of"), ExtResource("7_72xf2"), ExtResource("8_tqqxg"), ExtResource("9_gfamr"), ExtResource("10_f0gqm"), ExtResource("11_wk1et"), ExtResource("12_54byq")]
+textdb_location = "res://Data/dbtext.csv"
 
 [node name="Building" type="Node3D" parent="."]
 
@@ -197,7 +198,7 @@ theme = ExtResource("18_svpvp")
 stretch_mode = 0
 
 [node name="Left_Button" type="Button" parent="Control/HBoxContainer/CenterContainer/MarginContainer2/AspectRatioContainer3"]
-custom_minimum_size = Vector2i(96, 96)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 96.0
@@ -260,7 +261,7 @@ theme_override_constants/margin_left = 42
 theme_override_constants/margin_top = 15
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2i(0, 32)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 offset_left = 42.0
 offset_top = 15.0
@@ -290,7 +291,7 @@ offset_bottom = 42.0
 stretch_mode = 0
 
 [node name="DialogExitButton" type="Button" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer2/AspectRatioContainer"]
-custom_minimum_size = Vector2i(32, 32)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 offset_top = 2.5
 offset_right = 32.0
@@ -359,7 +360,7 @@ stretch_mode = 0
 
 [node name="Right_Button" type="Button" parent="Control/HBoxContainer/CenterContainer2/MarginContainer/AspectRatioContainer2"]
 texture_filter = 1
-custom_minimum_size = Vector2i(96, 96)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 96.0
