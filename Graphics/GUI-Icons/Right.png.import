@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dluf3jp2bdyo6"
-path="res://.godot/imported/ninepatch.png-7af01babbbe8f6c4e66b6324a02ed711.ctex"
+uid="uid://dtuabkhn3lnui"
+path="res://.godot/imported/Right.png-6bad13c46054abf0a172f615e5921f34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI-Icons/ninepatch.png"
-dest_files=["res://.godot/imported/ninepatch.png-7af01babbbe8f6c4e66b6324a02ed711.ctex"]
+source_file="res://Graphics/GUI-Icons/Right.png"
+dest_files=["res://.godot/imported/Right.png-6bad13c46054abf0a172f615e5921f34.ctex"]
 
 [params]
 
