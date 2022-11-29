@@ -9,10 +9,11 @@ enum STATES {WALKING = 2, IDLE = 1, INTERACTING = 0}
 var walk_dir = 0
 var look_dir:Vector2 = Vector2(0,1)
 var ignore_input = false;
-var walk_spd = 0.5
+var walk_spd = 1.0
 var rot_mult = 0
 var rot_spd = 0.25
 var button_walk = 0
+var can_interact = false
 
 @onready var animation_tree = $AnimationTree
 @onready var ignore_move: bool = false
@@ -25,7 +26,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#check input
-	var interact_state = Input.is_action_pressed("interact_button") && !ignore_input
+	var interact_state = Input.is_action_pressed("interact_button") && !ignore_input  && can_interact
 	walk_dir =clamp(int(Input.is_action_pressed("walk_left")) - int(Input.is_action_pressed("walk_right")) + button_walk, -1, 1) 
 	var walk_state = bool(walk_dir) && !ignore_input
 	
@@ -68,7 +69,6 @@ func idle_state(delta):
 	var rot_add = delta/rot_spd
 	rot_mult = sign(rot_mult)*clamp(abs(rot_mult) - rot_add, 0, 1)
 	$CharRoot.rotation.y = deg_to_rad(90)*rot_mult
-	
 	animation_tree["parameters/walking/current"] = 0
 	pass
 

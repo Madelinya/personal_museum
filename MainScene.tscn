@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgparb3m2bkdn"]
+[gd_scene load_steps=30 format=3 uid="uid://cgparb3m2bkdn"]
 
 [ext_resource type="Script" path="res://MasterScript.gd" id="1_23wxo"]
 [ext_resource type="Material" uid="uid://ctabpq8w38mf1" path="res://Materials/FloorMat.tres" id="1_ged3t"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dluf3jp2bdyo6" path="res://Graphics/GUI-Icons/ninepatch.png" id="20_3uvej"]
 [ext_resource type="Texture2D" uid="uid://bspflm7p8ap7b" path="res://Graphics/GUI-Icons/cROSS.png" id="21_fogcb"]
 [ext_resource type="Texture2D" uid="uid://dtuabkhn3lnui" path="res://Graphics/GUI-Icons/Right.png" id="22_lnsiw"]
+[ext_resource type="Texture2D" uid="uid://dqgq5owh8ly4q" path="res://Graphics/GUI-Icons/Prompt.png" id="23_x83hh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cibqs"]
 material = ExtResource("1_ged3t")
@@ -220,6 +221,7 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme = ExtResource("18_svpvp")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
@@ -233,6 +235,7 @@ offset_top = 50.0
 offset_right = 618.0
 offset_bottom = 490.0
 texture = ExtResource("20_3uvej")
+patch_margin_left = 18
 patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
@@ -248,25 +251,26 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer"]
 layout_mode = 2
 offset_right = 568.0
-offset_bottom = 47.0
+offset_bottom = 52.0
+size_flags_vertical = 3
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_right = 518.0
-offset_bottom = 47.0
+offset_right = 507.0
+offset_bottom = 52.0
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.47
+size_flags_stretch_ratio = 12.89
 theme_override_constants/margin_left = 42
 theme_override_constants/margin_top = 15
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="MainTitle" type="RichTextLabel" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 offset_left = 42.0
 offset_top = 15.0
-offset_right = 518.0
-offset_bottom = 47.0
+offset_right = 507.0
+offset_bottom = 52.0
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
@@ -274,50 +278,44 @@ text = "[center]LOREM IPSUM"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 522.0
-offset_right = 564.0
-offset_bottom = 47.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+offset_left = 511.0
+offset_right = 568.0
+offset_bottom = 52.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 37.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 42.0
 offset_bottom = 42.0
-stretch_mode = 0
+stretch_mode = 1
 
 [node name="DialogExitButton" type="Button" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer/MarginContainer2/AspectRatioContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-offset_top = 2.5
 offset_right = 32.0
-offset_bottom = 34.5
+offset_bottom = 32.0
 size_flags_horizontal = 3
 icon = ExtResource("21_fogcb")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-offset_left = 568.0
-offset_right = 568.0
-offset_bottom = 47.0
-
 [node name="marg" type="MarginContainer" parent="Control/HBoxContainer/MainTextContainer/MainTextRect/VBoxContainer"]
 layout_direction = 1
 layout_mode = 2
-offset_top = 51.0
+offset_top = 56.0
 offset_right = 568.0
 offset_bottom = 440.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 20.0
+size_flags_stretch_ratio = 7.89
 theme = ExtResource("18_svpvp")
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
@@ -329,7 +327,7 @@ layout_mode = 2
 offset_left = 50.0
 offset_top = 10.0
 offset_right = 518.0
-offset_bottom = 359.0
+offset_bottom = 354.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("18_svpvp")
@@ -373,8 +371,25 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Area3D>>" type="Area3D" parent="."]
+[node name="open_prompt" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 273.424
+offset_top = 119.03
+offset_right = 360.424
+offset_bottom = 244.03
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(43, 107)
+focus_mode = 0
+shortcut_in_tooltip = false
+action_mode = 0
+icon = ExtResource("23_x83hh")
+flat = true
+icon_alignment = 1
+
+[node name="info_boxes" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="info_boxes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09457, 0, -4.95615)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D>>"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="info_boxes/Area3D"]
 shape = SubResource("BoxShape3D_1j0ul")
