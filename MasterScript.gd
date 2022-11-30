@@ -4,7 +4,7 @@ extends Node3D
 @export var expositions:Array[PackedScene]
 @export_file var textdb_location 
 
-var rot_speed = 1.5
+var rot_speed = 0.75
 var interpolator = 0
 var target:float = 0
 var sample_base_pos = true
@@ -176,8 +176,12 @@ func gui_controls() -> void:
 		prompt_pos += Vector2(sin(Time.get_ticks_msec()/1000.0)*5.0,cos(Time.get_ticks_msec()/1000.0)*15.0)
 		open_prompt.set("position", prompt_pos)
 		
+		var prompt_vect = prompt_pos - find_child("Camera3D").unproject_position(character.position)
+		prompt_vect = prompt_vect.normalized()
+		var prompt_heading = (asin(Vector2(1,0).dot(prompt_vect)))
+		
 		var prompt_rot = sin(Time.get_ticks_msec()/1000.0)*deg_to_rad(15)
-		open_prompt.set("rotation",prompt_rot)
+		open_prompt.set("rotation",prompt_rot + prompt_heading)
 		sample_base_pos = false
 	else:
 		sample_base_pos = true

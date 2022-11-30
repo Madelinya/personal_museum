@@ -11,7 +11,7 @@ var look_dir:Vector2 = Vector2(0,1)
 var ignore_input = false;
 var walk_spd = 1.0
 var rot_mult = 0
-var rot_spd = 0.25
+var rot_spd = 0.125
 var button_walk = 0
 var can_interact = false
 

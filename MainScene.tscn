@@ -229,6 +229,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="MainTextRect" type="NinePatchRect" parent="Control/HBoxContainer/MainTextContainer"]
+visible = false
 layout_mode = 2
 offset_left = 50.0
 offset_top = 50.0
