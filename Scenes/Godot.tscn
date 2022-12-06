@@ -54,8 +54,8 @@ texture = ExtResource("4_cw5s7")
 
 [node name="info_boxes" type="Node3D" parent="."]
 
-[node name="GodotGE" type="Area3D" parent="info_boxes"]
+[node name="Godot" type="Area3D" parent="info_boxes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75644, -1.1827)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="info_boxes/GodotGE"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="info_boxes/Godot"]
 shape = SubResource("BoxShape3D_2ct2d")

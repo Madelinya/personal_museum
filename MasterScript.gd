@@ -120,8 +120,8 @@ func initialize_scene_order() -> void:
 	randomize()
 	#initial instantation 
 	scene_order.append_array(expositions)
-	scene_order.pop_back()
 	scene_order.shuffle()
+	scene_order.pop_back()
 	scene_order.push_front(welcome_screen)
 
 func initial_instantiation() -> void: 
