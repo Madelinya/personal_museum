@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb6c7tyqk2e71"]
+
+[ext_resource type="Material" uid="uid://dyawgy3g5px7s" path="res://Scenes/Trim/TrimMat.tres" id="1_ur5lh"]
+[ext_resource type="Material" path="res://Scenes/Trim/TrimMat2.tres" id="2_i3gsr"]
+[ext_resource type="Texture2D" uid="uid://dla82uno4edvq" path="res://Graphics/PresPics/GodotGEsign.png" id="3_h5tyf"]
+[ext_resource type="Texture2D" uid="uid://dlcp0eoyou3l" path="res://Graphics/PresPics/GodotGE.png" id="4_cw5s7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ry00"]
+size = Vector3(6, 4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q78b0"]
+size = Vector3(0.3, 6.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0pyh3"]
+size = Vector3(0.3, 10, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ct2d"]
+size = Vector3(5.62388, 2.45862, 2.07021)
+
+[node name="Expo_1" type="Node3D"]
+
+[node name="Trim" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.193676)
+mesh = SubResource("BoxMesh_8ry00")
+surface_material_override/0 = ExtResource("2_i3gsr")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Trim"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 5.12256, -0.15)
+material_override = ExtResource("1_ur5lh")
+mesh = SubResource("BoxMesh_q78b0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Trim/MeshInstance3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.892, 3, 0)
+material_override = ExtResource("1_ur5lh")
+mesh = SubResource("BoxMesh_0pyh3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ur5lh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Trim/MeshInstance3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.892, -3, 0)
+material_overlay = ExtResource("1_ur5lh")
+mesh = SubResource("BoxMesh_0pyh3")
+skeleton = NodePath("../..")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.305953, 0, -8.77207e-08, 0, 0.305953, 0, 2.67473e-08, 0, -1.00341, 0.0593748, 1.33668, -0.310415)
+texture = ExtResource("3_h5tyf")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.304914, 0, -8.74228e-08, 0, 0.304914, 0, 2.66564e-08, 0, -1, 0, 3.51622, -0.234233)
+texture = ExtResource("4_cw5s7")
+
+[node name="info_boxes" type="Node3D" parent="."]
+
+[node name="GodotGE" type="Area3D" parent="info_boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75644, -1.1827)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="info_boxes/GodotGE"]
+shape = SubResource("BoxShape3D_2ct2d")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://okhsxryqo0kw"]
+
+[ext_resource type="Material" uid="uid://dyawgy3g5px7s" path="res://Scenes/Trim/TrimMat.tres" id="1_k1xpf"]
+[ext_resource type="Material" path="res://Scenes/Trim/TrimMat2.tres" id="2_xtwll"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ry00"]
+size = Vector3(6, 4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q78b0"]
+size = Vector3(0.3, 6.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0pyh3"]
+size = Vector3(0.3, 10, 0.3)
+
+[node name="Trim" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+mesh = SubResource("BoxMesh_8ry00")
+surface_material_override/0 = ExtResource("2_xtwll")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 4.892, -0.15)
+material_override = ExtResource("1_k1xpf")
+mesh = SubResource("BoxMesh_q78b0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.892, 3, 0)
+material_override = ExtResource("1_k1xpf")
+mesh = SubResource("BoxMesh_0pyh3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_k1xpf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.892, -3, 0)
+material_overlay = ExtResource("1_k1xpf")
+mesh = SubResource("BoxMesh_0pyh3")
+skeleton = NodePath("../..")

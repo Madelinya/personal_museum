@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpw1e54x2wav2"]
+
+[ext_resource type="Texture2D" uid="uid://1v47qdq1jph7" path="res://Graphics/PresPics/hero-1536x1049.jpg" id="1_vpqwd"]
+[ext_resource type="Texture2D" uid="uid://ueebhckqix8t" path="res://Graphics/PresPics/NeumannSign.png" id="2_5h50o"]
+[ext_resource type="Material" path="res://Scenes/Trim/TrimMat2.tres" id="2_bwdah"]
+[ext_resource type="Material" uid="uid://dyawgy3g5px7s" path="res://Scenes/Trim/TrimMat.tres" id="2_edl0o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tsjf"]
+size = Vector3(5.62388, 2.45862, 2.07021)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ry00"]
+size = Vector3(6, 4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q78b0"]
+size = Vector3(0.3, 6.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0pyh3"]
+size = Vector3(0.3, 10, 0.3)
+
+[node name="Expo_1" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.378484, 0, 0, 0, 0.378484, 0, 0, 0, 0.798017, 0, 3.81999, -0.196756)
+texture = ExtResource("1_vpqwd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.378484, 0, -6.97649e-08, 0, 0.378484, 0, 3.30881e-08, 0, -0.798017, 0, 1.49354, -0.263977)
+texture = ExtResource("2_5h50o")
+
+[node name="info_boxes" type="Node3D" parent="."]
+
+[node name="NeumannU87" type="Area3D" parent="info_boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75644, -1.1827)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="info_boxes/NeumannU87"]
+shape = SubResource("BoxShape3D_2tsjf")
+
+[node name="Trim" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+mesh = SubResource("BoxMesh_8ry00")
+surface_material_override/0 = ExtResource("2_bwdah")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Trim"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 5.86197, -0.15)
+mesh = SubResource("BoxMesh_q78b0")
+surface_material_override/0 = ExtResource("2_edl0o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Trim/MeshInstance3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.892, 3, 0)
+mesh = SubResource("BoxMesh_0pyh3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_edl0o")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Trim/MeshInstance3D4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.892, -3, 0)
+mesh = SubResource("BoxMesh_0pyh3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_edl0o")

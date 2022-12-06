@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgparb3m2bkdn"]
+[gd_scene load_steps=24 format=3 uid="uid://blthgbyyhslja"]
 
 [ext_resource type="Script" path="res://MasterScript.gd" id="1_23wxo"]
 [ext_resource type="Material" uid="uid://ctabpq8w38mf1" path="res://Materials/FloorMat.tres" id="1_ged3t"]
@@ -6,8 +6,12 @@
 [ext_resource type="Material" uid="uid://c7vkvw0p1ncth" path="res://Materials/WallMat.tres" id="2_4ejvd"]
 [ext_resource type="Material" uid="uid://dks87o80v4mks" path="res://Materials/AccentMat.tres" id="2_fnffy"]
 [ext_resource type="PackedScene" uid="uid://dign8sewgdg1e" path="res://Scenes/Initial/Initial_scene.tscn" id="2_ljen1"]
-[ext_resource type="PackedScene" uid="uid://b323uxr2knjmo" path="res://Scenes/Expo_0.tscn" id="3_ekom3"]
+[ext_resource type="PackedScene" uid="uid://bpw1e54x2wav2" path="res://Scenes/Neumann.tscn" id="3_jp55d"]
+[ext_resource type="PackedScene" uid="uid://b323uxr2knjmo" path="res://Scenes/Drill.tscn" id="3_q0y7k"]
+[ext_resource type="PackedScene" uid="uid://cb6c7tyqk2e71" path="res://Scenes/Godot.tscn" id="4_1xu7v"]
 [ext_resource type="Material" uid="uid://bo4j5d6vx2t7r" path="res://Materials/SkyMat.tres" id="5_dxx4a"]
+[ext_resource type="PackedScene" uid="uid://oi7akl8j4jaw" path="res://Scenes/Hako.tscn" id="5_v1sum"]
+[ext_resource type="PackedScene" uid="uid://cpakx4m7vbaup" path="res://Scenes/Ender.tscn" id="6_erl7p"]
 [ext_resource type="Theme" uid="uid://3mnnjmkrmqfd" path="res://UI_Theme.tres" id="18_svpvp"]
 [ext_resource type="Texture2D" uid="uid://bl7n02fr2pn34" path="res://Graphics/GUI-Icons/Left.png" id="19_oel06"]
 [ext_resource type="Texture2D" uid="uid://dluf3jp2bdyo6" path="res://Graphics/GUI-Icons/ninepatch.png" id="20_3uvej"]
@@ -37,7 +41,7 @@ size = Vector2(40, 40)
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_23wxo")
 welcome_screen = ExtResource("2_ljen1")
-expositions = [ExtResource("3_ekom3")]
+expositions = [ExtResource("3_q0y7k"), ExtResource("6_erl7p"), ExtResource("4_1xu7v"), ExtResource("5_v1sum"), ExtResource("3_jp55d")]
 textdb_location = "res://Data/dbtext.csv"
 
 [node name="Building" type="Node3D" parent="."]
