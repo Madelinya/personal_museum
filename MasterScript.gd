@@ -50,7 +50,7 @@ func _ready():
 	
 	#load text into game
 	text_dict = load_dictionary_from_csv(textdb_location)
-	main_title.text = "[center]"+text_dict["default_title"]
+	main_title.text = text_dict["default_title"]
 	main_text.text = text_dict["default_text"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
